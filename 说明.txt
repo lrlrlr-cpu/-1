@@ -1,0 +1,2 @@
+前端使用react 端口为3000 使用proxy解决跨域问题，主要文件在src中的App.js,使用axios进行post请求
+后端使用JavaEE,用tomcat服务器部署(8080端口),主要逻辑文件是check.java(servlet文件)，当用户名不是lisi 密码不是12345时返回fail，否则返回successful

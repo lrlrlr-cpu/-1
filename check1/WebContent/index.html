@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+
+
+	function fn1(){
+		//get异步访问
+		$.get(
+			"/check1/check", //url地址
+			{"username":"lisi","password":12345}, //请求参数
+			function(data){ //执行成功后的回调函数
+				//{\"name\":\"tom\",\"age\":21}
+				alert(data.label);
+			},
+			"json"
+		);
+	}
+	function fn2(){
+		//post异步访问
+		$.post(
+			"/check1/check", //url地址
+			{"username":"lisi","password":"12345"}, //请求参数
+			function(data){ //执行成功后的回调函数
+				alert(data.label);
+			},
+			"json"
+		);
+	}
+	function fn3(){
+		$.ajax({
+			url:"/check1/check",
+			async:true,
+			type:"POST",
+			data:{"username":"lucy","password":18},
+			success:function(data){
+				alert(data.label);
+			},
+			error:function(){
+				alert("请求失败");
+			},
+			dataType:"json"
+		});
+	}
+</script>
+
+</head>
+<body>
+	<input type="button" value="get访问服务器端" onclick="fn1()"><span id="span1"></span>
+	<br>
+	<input type="button" value="post访问服务器端" onclick="fn2()"><span id="span2"></span>
+	<br>
+	<input type="button" value="ajax访问服务器端" onclick="fn3()"><span id="span2"></span>
+	<br>
+</body>
+</html>
